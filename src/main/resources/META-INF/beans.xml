@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Det här är en XML-fil som konfigurerar hur Java CDI (Contexts and Dependency Injection) används i ditt projekt. -->
+
+<beans xmlns="https://jakarta.ee/xml/ns/jakartaee"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/beans_3_0.xsd"
+       bean-discovery-mode="annotated">
+    <!--
+    xmlns och xsi används för att koppla till rätt schema och standard för Jakarta EE.
+    xsi:schemaLocation visar var schemat finns, vilket hjälper till att validera filen.
+    -->
+
+    <!-- bean-discovery-mode="annotated" betyder att bara klasser med vissa CDI-anteckningar (annotations)
+         kommer att upptäckas och användas som "beans" i programmet.
+    -->
+</beans>

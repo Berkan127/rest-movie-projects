@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <!-- Här börjar filen som styr hur projektet byggs. Den innehåller information om projektet och hur det ska skapas. -->
+
+    <!-- En manual som berättar för Maven vad projektet behöver och hur det ska hanteras. -->
+
+    <modelVersion>4.0.0</modelVersion>
+    <!-- Versionen av POM-formatet som används. 4.0.0 är standard och den senaste. -->
+
+    <groupId>se.mo</groupId>
+    <!-- Ett unikt namn för ditt projekt, ofta baserat på ditt företags eller organisationens namn och projektets syfte. -->
+1
+    <artifactId>rest-database</artifactId>
+    <!-- Namnet på projektet eller programmet. Används för att känna igen det när det paketeras. -->
+
+    <version>1.0-SNAPSHOT</version>
+    <!-- Versionen av projektet. "SNAPSHOT" betyder att detta är en utvecklingsversion. -->
+
+    <name>rest-database</name>
+    <!-- Namnet på projektet som används av Maven för visning. -->
+
+    <packaging>war</packaging>
+    <!-- Typen av fil som ska skapas. "war" betyder att det är en webbapplikation som kan laddas upp och köras på en server. -->
+
+    <properties>
+        <!-- Här definieras viktiga inställningar för projektet -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- Sätter teckenkodningen för projektet (UTF-8 är den vanligaste och rekommenderade). -->
+
+        <maven.compiler.target>11</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
+        <!-- Dessa inställningar anger att projektet ska byggas och köras med Java version 11. -->
+
+        <junit.version>5.10.2</junit.version>
+        <!-- Versionen av JUnit som ska användas för tester. -->
+    </properties>
+
+    <dependencies>
+        <!-- Här listas alla externa bibliotek och verktyg som projektet behöver för att fungera. -->
+        <dependency>
+            <groupId>jakarta.platform</groupId>
+            <artifactId>jakarta.jakartaee-web-api</artifactId>
+            <version>9.1.0</version>
+            <scope>provided</scope>
+            <!-- Detta bibliotek ger oss de standarder som behövs för att bygga webbapplikationer, som JPA, REST och CDI.
+       "Provided" betyder att servern redan har det här biblioteket, så vi behöver inte lägga till det i vår slutliga fil. -->
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+            <!-- JUnit-biblioteket för att skriva tester. Scope "test" betyder att det bara används under testkörning. -->
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+            <!-- JUnit-motorn som kör testerna. Även här är "test"-scope angivet. -->
+        </dependency>
+    </dependencies>
+
+    <build>
+        <!-- Inställningar för hur projektet ska byggas -->
+        <plugins>
+            <!-- Här definierar vi vilka Maven-plugins som ska användas -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.4.0</version>
+                <!-- Maven-plugin för att bygga en WAR-fil från projektet -->
+            </plugin>
+        </plugins>
+    </build>
+</project>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Detta är en XML-fil som använder UTF-8, en standard för att hantera text. "standalone='yes'" betyder att filen inte behöver något annat för att funka. -->
+
+<!-- En fil som berättar för programmet hur det ska prata med databasen persistence. -->
+
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
+             version="3.0">
+    <!-- Här definieras vilket format och version filen använder (Jakarta Persistence API version 3.0). -->
+
+
+    <persistence-unit name="default" transaction-type="JTA">
+        <!-- En "persistence unit" är som en samling inställningar för hur vi ska jobba med databasen.
+             "name" är vad vi kallar den här samlingen, här är den bara "default".
+             "transaction-type" betyder att appens server sköter databastransaktionerna. -->
+
+        <jta-data-source>jdbc/__default</jta-data-source>
+        <!-- Det här visar vilken datakälla (databasanslutning) som används.
+             "jdbc/__default" är bara ett namn på en standardkälla som servern hanterar. -->
+
+        <properties>
+            <!-- Här lägger vi till extra inställningar för hur databasen ska skötas. -->
+
+            <!-- 2 Skapa tabeller i databasen automatiskt om de inte redan finns -->
+            <property name="eclipselink.ddl-generation" value="create-tables"/>
+            <!-- Det här säger till systemet att bygga upp tabeller för oss. -->
+
+            <!-- 3 Lagra tabellinformationen direkt i databasen -->
+            <property name="eclipselink.ddl-generation.output-mode" value="database"/>
+
+
+            <property name="javax.persistence.schema-generation.database.action" value="create"/>
+            <!-- Det här betyder att tabeller och databasstruktur skapas när appen körs. -->
+        </properties>
+    </persistence-unit>
+</persistence>
